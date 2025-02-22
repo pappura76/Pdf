@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Tools - Online PDF Editor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .navbar {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: gray;
+        }
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                width: 100%;
+                background-color: #222;
+                padding: 10px 0;
+            }
+            .nav-links a {
+                display: block;
+                text-align: center;
+                padding: 10px;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+        }
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #cce5ff;
+        }
+        .hero h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+        .tools-section {
+            padding: 40px 20px;
+        }
+        .tools-section h3 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .tools-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .tool-card {
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            text-align: center;
+            cursor: pointer;
+        }
+        .tool-card:hover {
+            transform: scale(1.05);
+        }
+        .testimonial-section {
+            padding: 40px 20px;
+            background-color: #fff;
+        }
+        .testimonial-section h3 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .testimonial-card {
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            background-color: #f8f9fa;
+            margin: 20px 0;
+            transition: transform 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .testimonial-card h5 {
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 1.2em;
+        }
+        .testimonial-card span {
+            color: #666;
+            font-size: 0.9em;
+            display: block;
+            margin-top: 5px;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+        .footer a {
+            color: #ddd;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>PDF Tools</h1>
+        <span class="menu-btn" onclick="toggleMenu()">☰</span>
+        <div class="nav-links">
+            <a href="#">🏠 Home</a>
+            <a href="#">🛠 Tools</a>
+            <a href="#">💰 Pricing</a>
+            <a href="#">🎯 Services</a>
+            <a href="#">🔒 Login</a>
+            <a href="#">📝 Sign Up</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h2>Online PDF Tools - Fast, Secure & Cloud-Based</h2>
+        <p>Edit, convert, and manage your PDF files with ease</p>
+        <button class="btn" style="background-color: #28a745; color: white;">🛠 Try PDF Tools Now</button>
+        <button class="btn" style="background-color: #007bff; color: white;">📄 View Our Services</button>
+    </header>
+
+    <section class="tools-section">
+        <h3>PDF Editing & Enhancement</h3>
+        <div class="tools-container">
+            <a href="pdf/pdf-nosie-renove" style="text-decoration: none; color: inherit;">
+    <div class="tool-card" style="background-color: #d4edda;">
+        <h4>🔊</h4>
+        <h6>Remove Noise</h6>
+        <p>Remove background noise from PDFs.</p>
+    </div>
+</a>
+            <div class="tool-card" style="background-color: #cce5ff;">
+                <h4>📑</h4>
+                <h6>Merge PDFs</h6>
+                <p>Overlay multiple PDFs with ease.</p>
+            </div>
+            <div class="tool-card" style="background-color: #ffcccc;">
+                <h4>🔒</h4>
+                <h6>Encrypt PDF</h6>
+                <p>Add password protection to your PDFs.</p>
+            </div>
+            <div class="tool-card" style="background-color: #ffebcc;">
+                <h4>🖼️</h4>
+                <h6>Extract Images</h6>
+                <p>Extract all images from PDFs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-section">
+        <h3>What Our Users Say</h3>
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <p>"This PDF editor transformed how we handle documents. The noise removal feature alone saved us countless hours of manual editing. Incredibly efficient and user-friendly!"</p>
+                <h5>Sarah Johnson</h5>
+                <span>Project Manager | Tech Solutions Inc.</span>
+            </div>
+            <div class="testimonial-card">
+                <p>"As a freelance designer, I need quick and reliable PDF tools. The image extraction feature works flawlessly, and the cloud-based storage makes collaboration seamless."</p>
+                <h5>Michael Chen</h5>
+                <span>Senior UI/UX Designer</span>
+            </div>
+            <div class="testimonial-card">
+                <p>"The encryption features give me peace of mind when sharing sensitive legal documents. It's become an essential tool in our daily operations."</p>
+                <h5>Emma Wilson</h5>
+                <span>Legal Consultant | Wilson & Partners</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        &copy; 2025 PDF Tools. All Rights Reserved. | 
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Contact Us</a>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
