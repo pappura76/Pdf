@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Remove noise from PDF files online - Clean PDF documents, remove background artifacts, and enhance readability with our advanced PDF Noise Remover tool">
+    <title>PDF Noise Remover - Clean PDF Documents Online</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <style>
+        /* Base Styles from Previous Code */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        .navbar {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: gray;
+        }
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Main Content Styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+        }
+        .tool-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        /* File Upload Section */
+        .upload-section {
+            text-align: center;
+            border: 2px dashed #ccc;
+            padding: 40px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .upload-section:hover {
+            border-color: #007bff;
+            background: #f8f9fa;
+        }
+        #file-input {
+            display: none;
+        }
+        .preview-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        /* Ad Units */
+        .ad-unit {
+            background: #fff;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .sidebar-ad {
+            height: 600px;
+            background: #f8f9fa;
+        }
+
+        /* Processing Controls */
+        .controls {
+            margin: 20px 0;
+        }
+        .noise-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .option-card {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .option-card.selected {
+            border-color: #007bff;
+            background: #e7f1ff;
+        }
+
+        /* Progress Animation */
+        .progress-bar {
+            height: 20px;
+            background: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: #007bff;
+            transition: width 0.3s ease;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 30px 15px;
+            margin-top: 50px;
+        }
+        .footer a {
+            color: #ddd;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .noise-options {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                width: 100%;
+                background-color: #222;
+                padding: 10px 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <nav class="navbar">
+        <h1>PDF Noise Remover</h1>
+        <span class="menu-btn" onclick="toggleMenu()">☰</span>
+        <div class="nav-links">
+            <a href="#">🏠 Home</a>
+            <a href="#">🛠 Tools</a>
+            <a href="#">💰 Pricing</a>
+            <a href="#">🎯 Services</a>
+            <a href="#">🔒 Login</a>
+            <a href="#">📝 Sign Up</a>
+        </div>
+    </nav>
+
+    <!-- Ad Unit Top -->
+    <div class="ad-unit" id="ad-header">
+        <!-- AdSense Header Code -->
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+            data-ad-slot="XXXXXXXXXX"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="container">
+        <main class="tool-container">
+            <h2>PDF Noise Removal Tool</h2>
+            <div class="upload-section" onclick="document.getElementById('file-input').click()">
+                <p>Click to upload PDF file</p>
+                <input type="file" id="file-input" accept=".pdf">
+            </div>
+
+            <div class="noise-options" id="noiseOptions">
+                <div class="option-card" onclick="toggleOption(this)">
+                    <h4>Background Patterns</h4>
+                    <p>Remove grid lines and watermarks</p>
+                </div>
+                <div class="option-card" onclick="toggleOption(this)">
+                    <h4>Scan Artifacts</h4>
+                    <p>Remove dust spots and scan noise</p>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="btn process-btn" onclick="processPDF()">Clean PDF File</button>
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+            </div>
+
+            <div class="preview-section" id="preview"></div>
+        </main>
+
+        <!-- Sidebar Ad -->
+        <aside class="ad-unit sidebar-ad" id="ad-sidebar">
+            <!-- AdSense Sidebar Code -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                data-ad-slot="XXXXXXXXXX"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="ad-unit" id="ad-footer">
+            <!-- AdSense Footer Code -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                data-ad-slot="XXXXXXXXXX"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <p>&copy; 2025 PDF Tools. All Rights Reserved.</p>
+        <div>
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms of Service</a> | 
+            <a href="#">Contact Us</a>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Toggle
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        }
+
+        // PDF Processing Simulation
+        let selectedOptions = [];
+        
+        function toggleOption(element) {
+            element.classList.toggle("selected");
+            const option = element.querySelector('h4').textContent;
+            if(selectedOptions.includes(option)) {
+                selectedOptions = selectedOptions.filter(item => item !== option);
+            } else {
+                selectedOptions.push(option);
+            }
+        }
+
+        function processPDF() {
+            const fileInput = document.getElementById('file-input');
+            if(!fileInput.files.length) {
+                alert('Please select a PDF file first!');
+                return;
+            }
+            
+            // Simulate processing
+            const progressBar = document.getElementById('progress');
+            let width = 0;
+            const interval = setInterval(() => {
+                if(width >= 100) {
+                    clearInterval(interval);
+                    showDownload();
+                } else {
+                    width++;
+                    progressBar.style.width = width + '%';
+                }
+            }, 50);
+        }
+
+        function showDownload() {
+            const preview = document.getElementById('preview');
+            preview.innerHTML = `
+                <h3>Processing Complete!</h3>
+                <a href="#" class="btn" style="background-color: #28a745; color: white;">
+                    ↓ Download Clean PDF
+                </a>
+                <p>File size: 2.4MB | Pages: 12 | Noise removed: ${selectedOptions.join(', ')}</p>
+            `;
+        }
+
+        // Initialize AdSense
+        window.addEventListener('load', () => {
+            const ads = document.querySelectorAll('.adsbygoogle');
+            ads.forEach(ad => {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            });
+        });
+    </script>
+</body>
+</html>
